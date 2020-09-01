@@ -31,17 +31,16 @@ spec:
     }
   }
   environment {
-    TOKEN=credentials('8b8b0611-4abe-490c-b382-b34889fe39bb')
+    TOKEN=credentials('cd33ce09-42b5-481e-b714-15f1c1bd19e1')
 }
   stages {
       stage("Deploy") {
           steps {
               container('kubectl') {
                   sh '''
-                    #cd grafana-and-por/
+                    kubectl --token=$TOKEN create clusterrolebinding grafana --clusterrole cluster-admin --serviceaccount=jenkins:jenkins -n monitor
                     #. pro-graf.sh
                     #kubectl --token=$TOKEN -n monito create namespace monitor
-                    #kubectl --token=$TOKEN create rolebinding pro --clusterrole=admin --serviceaccount=jenkins:default --namespace=monitor
                     helm repo add stable https://kubernetes-charts.storage.googleapis.com
 		    helm repo update
                     helm install prometheus-operator stable/prometheus-operator --namespace monitor --set grafana.service.type=NodePort
