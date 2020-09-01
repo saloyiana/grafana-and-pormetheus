@@ -38,7 +38,7 @@ spec:
           steps {
               container('kubectl') {
                   sh '''
-                    kubectl --token=$TOKEN create clusterrolebinding grafana --clusterrole cluster-admin --serviceaccount=jenkins:jenkins -n monitor
+                    #kubectl --token=$TOKEN create clusterrolebinding grafana --clusterrole cluster-admin --serviceaccount=jenkins:jenkins -n monitor
                     #. pro-graf.sh
                     #kubectl --token=$TOKEN -n monitor create namespace monitor
                     helm repo add stable https://kubernetes-charts.storage.googleapis.com
