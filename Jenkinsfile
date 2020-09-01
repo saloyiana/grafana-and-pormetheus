@@ -40,7 +40,7 @@ spec:
                   sh '''
                     kubectl --token=$TOKEN create clusterrolebinding grafana --clusterrole cluster-admin --serviceaccount=jenkins:jenkins -n monitor
                     #. pro-graf.sh
-                    #kubectl --token=$TOKEN -n monito create namespace monitor
+                    #kubectl --token=$TOKEN -n monitor create namespace monitor
                     helm repo add stable https://kubernetes-charts.storage.googleapis.com
 		    helm repo update
                     helm install prometheus-operator stable/prometheus-operator --namespace monitor --set grafana.service.type=NodePort
