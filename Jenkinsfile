@@ -43,7 +43,7 @@ spec:
                     #kubectl --token=$TOKEN -n monitor create namespace monitor
                     helm repo add stable https://kubernetes-charts.storage.googleapis.com
 		    helm repo update
-                    helm install prometheus-operator stable/prometheus-operator --namespace monitor --set grafana.service.type=NodePort
+                    helm install prometheus-operator stable/prometheus-operator --namespace monitor --set grafana.service.type=NodePort --set prometheus.service.type=NodePort
                     kubectl apply -f ingress.yaml -n monitor
                     kubectl --token=$TOKEN -n monitor get all
                     sleep 60
